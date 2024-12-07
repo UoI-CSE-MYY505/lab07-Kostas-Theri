@@ -21,10 +21,10 @@ main:
 #  s6 = &array[index/4]
 # -------------------------------------------------------------------
 # Set code parameters here:
-    li     s0, 32     # arraySize
-    li     s1, 0      # option
-    li     s2, 1      # stepSize
-    li     s3, 1      # repCount
+    li     s0, 128     # arraySize
+    li     s1, 1      # option
+    li     s2, 16      # stepSize
+    li     s3, 4      # repCount
 # Don't modify below the line
 # -------------------------------------------------------------------
 
@@ -38,7 +38,7 @@ innerloop:
     bne    s1, zero, else   # if option == 0
     sw     zero, 0(s6)      #   array[i] = 0
     j      skip
-else:                       # else
+else:                       # else
     lw     t0, 0(s6)
     addi   t0, t0, 1
     sw     t0, 0(s6)        #   array[index] += 1
